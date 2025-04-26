@@ -38,9 +38,9 @@
     <section id="sobre">
         <h1>Olá, sou a Jéssica!</h1>
         <div class="foto-descricao">
-            <img src="assets/images/fotoperfil.png" alt="Foto de perfil" class="foto" >
+            <img src="assets/images/1745637362828.jpg" alt="Foto de perfil" class="foto" >
             <p>
-                Sou uma aspirante a desenvolvedora Front-End Júnior com conhecimento básico em HTML, CSS e JavaScript. Tenho experiência prática na criação de sites simples, que desenvolvo para praticar o que aprendi, através de acertos e muitos erros, mas sempre me empenhando em estudar para criar projetos cada vez melhores. Atualmente, estou matriculada no "Coding the Future Bootcamp", oferecido pela Dio em parceria com o Grupo RiHappy, com o objetivo de aprimorar ainda mais minhas habilidades em tecnologias web. O desenvolvimento front-end me atrai e desperta uma curiosidade difícil de explicar. Essa jornada de aprendizado, apesar de desafiadora, tem sido fundamental para meu crescimento, tanto como profissional quanto como pessoa. Estou em busca de uma oportunidade no mercado de tecnologia onde eu possa desenvolver meu verdadeiro potencial, pois acredito que tenho muito a somar. Estou comprometida em aprender constantemente e sei que, quando desafiada, posso entregar resultados que agregam valor real à experiência do usuário.
+                Sou apaixonada por aprendizado e estou focada no desenvolvimento das minhas habilidades em design gráfico e marketing digital. Tenho conhecimentos básicos em HTML, CSS e JavaScript, que adquiri enquanto estudava front-end, e ainda aplico esses conhecimentos em projetos pessoais sempre que possível. Também estudo idiomas de forma autodidata (inglês, francês e espanhol) e gosto de unir criatividade com técnica para criar soluções visuais e funcionais. Estou constantemente buscando formas de aplicar o que aprendo e crescer profissionalmente. Acredito que cada habilidade adquirida é uma peça importante do meu caminho, e estou determinada a construir uma trajetória que una todas essas paixões de forma única e autêntica.
             </p>
         </div>
     </section>
@@ -243,13 +243,51 @@
         <!-- Formulário de Contato -->
         <div class="formulario-container">
             <h2>Entre em Contato</h2>
+            <p> Deixe seu elogio, faça perguntas ou compartilhe suas sugestões! Ficarei feliz em receber sua mensagem.</p>
             <!-- Formulário -->
-        <form id="formulario" method="post">
-            <input type="text" name="nome" placeholder="Seu nome" required>
-            <input type="email" name="email" placeholder="Seu e-mail" required>
-            <textarea name="mensagem" placeholder="Sua mensagem" rows="5" required></textarea>
-            <button type="submit" id="submit-btn">Enviar</button>
-        </form>
+            <form id="formulario" class="contato-form">
+                <input type="text" name="nome" id="nome" placeholder="Seu nome" required>
+                <input type="email" name="email" id="email" placeholder="Seu e-mail" required>
+                <textarea name="mensagem" id="mensagem" placeholder="Sua mensagem" rows="5" required></textarea>
+                <button type="submit" id="submit-btn">Enviar</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+
+<script>
+// Espera o carregamento completo da página antes de executar o código
+document.addEventListener("DOMContentLoaded", function() {
+    // Inicialize o EmailJS com a sua chave pública
+    emailjs.init("6Q18tLxn1YtbrtUis"); // Substitua com o seu USER_ID
+
+    // Adiciona um ouvinte ao evento de envio do formulário
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        // Verifica se os campos estão preenchidos corretamente
+        var nome = document.getElementById("nome").value;
+        var email = document.getElementById("email").value;
+        var mensagem = document.getElementById("mensagem").value;
+
+        if (nome && email && mensagem) {
+            // Enviar o formulário para o seu e-mail usando o EmailJS
+            emailjs.sendForm('service_pxxhch5', 'template_j5c14wy', this).then(function(response) {
+                console.log("Mensagem enviada com sucesso!", response);
+                alert("Mensagem enviada com sucesso!");
+            }, function(error) {
+                console.log("Erro ao enviar mensagem:", error);
+                alert("Ocorreu um erro. Tente novamente.");
+            });
+        } else {
+            alert("Por favor, preencha todos os campos.");
+        }
+    });
+});
+</script>
+
 
 
         <script>
